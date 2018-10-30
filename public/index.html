@@ -20,7 +20,7 @@
 
     <div id='app' ng-app='app' ng-controller='mainCtrl'>
       <form id="newPoki" ng-submit="addPoki()">
-        Message: <input type="text" ng-model="Name" value=""><br>
+        Message: <input type="text" ng-model="Name" value="" maxlength="50"><br>
         <input type="submit" value="Submit">
       </form>
 
@@ -29,12 +29,18 @@
           Set up your endpoint at `/pokemon` to get this view working
         </h1>
       </div>
-
-      <ul ng-if='pokemon.length' class='list center stretch' style="list-style-type:none">
-        <li ng-repeat='p in pokemon' class='pokemon'>
-          <h1>{{ p.name }}</h1>
-        </li>
-      </ul>
+          <ul ng-if='pokemon.length' class='list center stretch' style="list-style-type:none">
+            <li ng-repeat='p in pokemon | filter' class='pokemon'>
+                <div layout="row" ng-if="$even">
+                  <div flex>
+                    <span>{{ p.name }}</span><br><br>
+                  </div>
+                </div>
+                <div flex ng-if="$odd">
+                  <span>{{ p.name }}</span>
+                </div>
+            </li>
+          </ul>
 
     </div>
   </center>
