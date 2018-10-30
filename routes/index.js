@@ -1,23 +1,25 @@
 var express = require('express');
 var router = express.Router();
+
+var index_to_remove = 0;
 var pokemon = [
   {
-    name: 'Message1',
+    name: '*Looks both ways* Want any memes?',
   },
   {
-    name: 'Message2',
+    name: 'COUNTRY ROOOOOAAAAADDDDSSS',
   },
   {
-    name: 'Message3',
+    name: 'halo_slayer_84604 wuz here',
   },
   {
-    name: 'Message4',
+    name: 'Yeet',
   },
   {
-    name: 'Message5',
+    name: 'Ya like jazz?',
   },
   {
-    name: 'Message6',
+    name: 'WEST VIRGINIIIIIAAAAAAA',
   }
 ];
 /* GET home page. */
@@ -30,7 +32,8 @@ router.get('/pokemon', function(req, res) {
 router.post('/pokemon', function(req, res) {
     console.log("In Pokemon Post");
     console.log(req.body);
-    pokemon.push(req.body);
+    pokemon[index_to_remove] = req.body;
+    index_to_remove = (index_to_remove + 1) % 6;
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 }); 
 module.exports = router;
