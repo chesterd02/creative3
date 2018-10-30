@@ -4,32 +4,40 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
   <script src="javascripts/app.js"></script>
-  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <!--<link rel="stylesheet" type="text/css" href="stylesheets/style.css">-->
   <meta charset="utf-8">
   <title>Wall of Graffiti</title>
+  <style>
+    body {
+      background-color: #aaaaff;
+    }
+  </style>
 </head>
 
 <body>
-  <h1> Enter A New Message to write on the Wall of Graffiti</h1>
+  <center>
+    <h1> Enter A New Message to write on the Wall of Graffiti</h1>
 
-  <div id='app' ng-app='app' ng-controller='mainCtrl'>
-    <form id="newPoki" ng-submit="addPoki()">
-      Message: <input type="text" ng-model="Name" value=""><br>
-      <input type="submit" value="Submit">
-    </form>
+    <div id='app' ng-app='app' ng-controller='mainCtrl'>
+      <form id="newPoki" ng-submit="addPoki()">
+        Message: <input type="text" ng-model="Name" value=""><br>
+        <input type="submit" value="Submit">
+      </form>
 
-    <div ng-if='!pokemon.length' class='no-pokemon center stretch'>
-      <h1 class='h1'>
-        Set up your endpoint at `/pokemon` to get this view working
-      </h1>
+      <div ng-if='!pokemon.length' class='no-pokemon center stretch'>
+        <h1 class='h1'>
+          Set up your endpoint at `/pokemon` to get this view working
+        </h1>
+      </div>
+
+      <ul ng-if='pokemon.length' class='list center stretch' style="list-style-type:none">
+        <li ng-repeat='p in pokemon' class='pokemon'>
+          <h1>{{ p.name }}</h1>
+        </li>
+      </ul>
+
     </div>
-
-    <ul ng-if='pokemon.length' class='list center stretch'>
-      <li ng-repeat='p in pokemon' class='pokemon'>
-        <h1>{{ p.name }}</h1>
-      </li>
-    </ul>
-
-  </div>
+  </center>
 </body>
+
 </html>
