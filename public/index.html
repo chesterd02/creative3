@@ -13,11 +13,12 @@
     }
     .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto;   /* number of items in the row */ 
   grid-gap: 10px;
   background-color: #2196F3;
   padding: 10px;
 }
+      /* grid css */
 .grid-container > div {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid black;
@@ -33,15 +34,18 @@
   <center>
     <h1> Enter A New Message to write on the Wall of Graffiti</h1>
     <div id='app' ng-app='app' ng-controller='mainCtrl'>
-      <form id="newPoki" ng-submit="addPoki()">
+      
+      <form id="newPoki" ng-submit="addPoki()"  onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
         Message: <input type="text" ng-model="Name" value="" maxlength="50"><br>
         <input type="submit" value="Submit">
       </form>
-<div class="grid-container">
-      <div ng-repeat='p in pokemon'>
-         <div>{{p.name}}</div>
+
+      <div class="grid-container">
+        <div ng-repeat='p in pokemon'>
+          <div>{{p.name}}</div>
+        </div>
       </div>
-</div>
+      
     </div>
   </center>
 </body>
