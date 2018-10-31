@@ -11,39 +11,43 @@
     body {
       background-color: #aaaaff;
     }
+    .grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+}
   </style>
+  
+
 </head>
 
 <body>
   <center>
     <h1> Enter A New Message to write on the Wall of Graffiti</h1>
-
     <div id='app' ng-app='app' ng-controller='mainCtrl'>
       <form id="newPoki" ng-submit="addPoki()">
         Message: <input type="text" ng-model="Name" value="" maxlength="50"><br>
         <input type="submit" value="Submit">
       </form>
-
-      <div ng-if='!pokemon.length' class='no-pokemon center stretch'>
-        <h1 class='h1'>
-          Set up your endpoint at `/pokemon` to get this view working
-        </h1>
+<div class="grid-container">
+      <div ng-repeat='p in pokemon'>
+         <div>{{p.name}}</div>
       </div>
-          <ul ng-if='pokemon.length' class='list center stretch' style="list-style-type:none">
-            <li ng-repeat='p in pokemon | filter' class='pokemon'>
-                <div layout="row" ng-if="$even">
-                  <div flex>
-                    <span>{{ p.name }}</span><br><br>
-                  </div>
-                </div>
-                <div flex ng-if="$odd">
-                  <span>{{ p.name }}</span>
-                </div>
-            </li>
-          </ul>
-
+</div>
     </div>
   </center>
 </body>
 
 </html>
+
+
+
+<!--refresh page on submit-->
