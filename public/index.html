@@ -2,31 +2,43 @@
 <html>
 
 <head>
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
   <script src="javascripts/app.js"></script>
   <!--<link rel="stylesheet" type="text/css" href="stylesheets/style.css">-->
   <meta charset="utf-8">
   <title>Wall of Graffiti</title>
   <style>
+    @font-face {
+      font-family: 'Children';
+      src: url('Children.ttf');
+    }
+
     body {
       background-color: #aaaaff;
     }
+
     .grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;   /* number of items in the row */ 
-  grid-gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
-}
-      /* grid css */
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid black;
-  text-align: center;
-  font-size: 30px;
-}
+      display: grid;
+      grid-template-columns: auto auto auto;
+      /* number of items in the row */
+      grid-gap: 10px;
+      /*background-color: #2196F3;*/
+      padding: 10px;
+      font-family: "Children", sans-serif;
+    }
+
+    /* grid css */
+
+    .grid-container>div {
+      /*background-color: rgba(255, 255, 255, 0.8);*/
+      /*border: 1px solid black;*/
+      text-align: center;
+      font-size: 30px;
+
+    }
   </style>
-  
+
 
 </head>
 
@@ -34,8 +46,8 @@
   <center>
     <h1> Enter A New Message to write on the Wall of Graffiti</h1>
     <div id='app' ng-app='app' ng-controller='mainCtrl'>
-      
-      <form id="newPoki" ng-submit="addPoki()"  onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+
+      <form id="newPoki" ng-submit="addPoki()" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
         Message: <input type="text" ng-model="Name" value="" maxlength="50"><br>
         <input type="submit" value="Submit">
       </form>
@@ -45,7 +57,7 @@
           <div>{{p.name}}</div>
         </div>
       </div>
-      
+
     </div>
   </center>
 </body>
